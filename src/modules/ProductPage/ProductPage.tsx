@@ -49,6 +49,7 @@ export const ProductPage = () => {
     if (!product) {
       setNotFound(true);
       setIsLoading(false);
+
       return;
     }
 
@@ -101,7 +102,7 @@ export const ProductPage = () => {
     { midnightgreen: '#006400' },
     { silver: '#C0C0C0' },
     { spacegray: '#696969' },
-    { 'space grey': '#696969' },
+    { 'space gray': '#696969' },
     { red: '#FF0000' },
     { white: '#FFFFFF' },
     { coral: '#FF7F50' },
@@ -173,7 +174,7 @@ export const ProductPage = () => {
 
   function handleCapacityBtnClick(capacity: string) {
     navigate(
-      `/product/${productDetails?.namespaceId}-${capacity.toLowerCase()}-${productDetails?.color}`,
+      `/product/${productDetails?.namespaceId}-${capacity.toLowerCase()}-${productDetails?.color.replace(/\s/g, '-').toLowerCase()}`,
     );
   }
 
@@ -252,7 +253,11 @@ export const ProductPage = () => {
                           },
                         )}
                         key={idx}
-                        onClick={() => handleColorBtnClick(color)}
+                        onClick={() =>
+                          handleColorBtnClick(
+                            color.replace(/\s/g, '-').toLowerCase(),
+                          )
+                        }
                       >
                         <span
                           className={`${s.color_btn__inside}`}
