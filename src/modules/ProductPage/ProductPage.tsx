@@ -50,6 +50,13 @@ export const ProductPage = () => {
 
       return;
     }
+    /* eslint-disable no-console */
+    console.log(
+      new URL(
+        `api/${product?.category}.json`,
+        window.location.origin + import.meta.env.BASE_URL,
+      ),
+    );
 
     fetch(
       new URL(

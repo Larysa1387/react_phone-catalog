@@ -42,6 +42,18 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    /* eslint-disable no-console */
+    console.log(
+      new URL(
+        'api/products.json',
+        window.location.origin +
+          new URL(
+            'api/products.json',
+            window.location.origin + import.meta.env.BASE_URL,
+          ),
+      ),
+      import.meta.env.BASE_URL,
+    );
     fetch(
       new URL(
         'api/products.json',
