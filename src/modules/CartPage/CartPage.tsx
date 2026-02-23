@@ -5,9 +5,9 @@ import { Breadcrumb } from '../../components/Breadcrumb';
 import { CartItem } from './components/CartItem';
 import { ProductsContext } from '../../Context/ProductsContext';
 import { ModalCheckout } from './components/ModalCheckout';
+import { asset } from '../../hooks/utils';
 
 import s from './CartPage.module.scss';
-import { asset } from '../../hooks/utils';
 
 export const CartPage = () => {
   const cartProds = useContextSelector(ProductsContext, ctx => ctx.cartProds);
@@ -16,6 +16,11 @@ export const CartPage = () => {
 
   const totalSumm = cartProds.reduce(
     (sum, product) => sum + product.price * product.quantity,
+    0,
+  );
+
+  const totalQuantity = cartProds.reduce(
+    (sum, product) => sum + product.quantity,
     0,
   );
 
@@ -52,8 +57,8 @@ export const CartPage = () => {
               <div className={`${s.bottom_bordered}`}>
                 <p className="title is-3 mb-0">$ {totalSumm}</p>
                 <p className={`${s.box__text}`}>
-                  Total for {cartProds.length} item
-                  {cartProds.length === 1 ? '' : 's'}
+                  Total for {totalQuantity} item
+                  {totalQuantity === 1 ? '' : 's'}
                 </p>
               </div>
               <button
