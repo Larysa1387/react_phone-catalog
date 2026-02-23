@@ -36,11 +36,6 @@ export const Dropdown = () => {
     if (!newSort) {
       params.delete('sort');
     }
-    // setSearchParams(prev => {
-    //   const newParams = new URLSearchParams(prev);
-    //   newParams.delete('page');
-    //   return newParams;
-    // });
 
     params.delete('page');
     setSearchParams(params);
