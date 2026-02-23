@@ -44,16 +44,9 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     /* eslint-disable no-console */
     console.log(
-      new URL(
-        'api/products.json',
-        window.location.origin +
-          new URL(
-            'api/products.json',
-            window.location.origin + import.meta.env.BASE_URL,
-          ),
-      ),
-      import.meta.env.BASE_URL,
+      `${window.location.origin}${import.meta.env.BASE_URL}api/products.json'`,
     );
+
     fetch(
       new URL(
         'api/products.json',
