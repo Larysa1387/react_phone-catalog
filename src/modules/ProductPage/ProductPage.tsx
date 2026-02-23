@@ -161,6 +161,7 @@ export const ProductPage = () => {
       });
       e.currentTarget.parentElement?.classList.add(s.is_active);
       const image = e.currentTarget.getAttribute('data-sourceImg') || '';
+
       imageRef.current.src = asset(image);
     }
   }

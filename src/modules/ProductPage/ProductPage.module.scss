@@ -32,6 +32,10 @@
   border: 1px solid vars.$main-gray;
   border-radius: 4px;
 
+  &:hover {
+    border-color: vars.$icons-grey;
+  }
+
   &__figure {
     width: 42px;
     height: 40px;
