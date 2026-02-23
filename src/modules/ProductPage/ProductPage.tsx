@@ -200,7 +200,7 @@ export const ProductPage = () => {
                           className={`image ${s.small_img__figure}`}
                           onClick={() => handleImageCkick(im)}
                         >
-                          <img src={`/${im}`} alt={`image-${im}`} />
+                          <img src={`./${im}`} alt={`image-${im}`} />
                         </figure>
                       </div>
                     ))}
@@ -210,7 +210,7 @@ export const ProductPage = () => {
                       <figure className={`image ${s.big_img__figure}`}>
                         <img
                           ref={imageRef}
-                          src={`/${productDetails?.images[0]}`}
+                          src={`./${productDetails?.images[0]}`}
                           alt={`image`}
                         />
                       </figure>
