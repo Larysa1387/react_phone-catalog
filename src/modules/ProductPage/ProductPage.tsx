@@ -160,7 +160,7 @@ export const ProductPage = () => {
         }
       });
       e.currentTarget.parentElement?.classList.add(s.is_active);
-      const image = e.currentTarget.getAttribute('data-sourceImg') || '';
+      const image = e.currentTarget.getAttribute('data-sourceimg') || '';
 
       imageRef.current.src = asset(image);
     }
@@ -214,7 +214,7 @@ export const ProductPage = () => {
                         key={idx}
                       >
                         <figure
-                          data-sourceImg={im}
+                          data-sourceimg={im}
                           className={`image ${s.small_img__figure}`}
                           onClick={handleImageCkick}
                         >
