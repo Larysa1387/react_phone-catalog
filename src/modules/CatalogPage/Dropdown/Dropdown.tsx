@@ -37,6 +37,7 @@ export const Dropdown = () => {
       params.delete('sort');
     }
 
+    params.delete('page');
     setSearchParams(params);
   }
 
@@ -56,6 +57,7 @@ export const Dropdown = () => {
       params.delete('perpage');
     }
 
+    params.delete('page');
     setSearchParams(params);
   }
 
@@ -75,7 +77,9 @@ export const Dropdown = () => {
             aria-haspopup="true"
             aria-controls="dropdown-menu3"
             onBlur={() => setTimeout(() => setIsActive(false), 150)}
-            onClick={() => setIsActive(true)}
+            onClick={() => {
+              setIsActive(true);
+            }}
           >
             <span className={`${s.dropdown_btn__text}`}>
               {getSortTitle(sort as keyof typeof sortValue)}
