@@ -51,7 +51,12 @@ export const ProductPage = () => {
       return;
     }
 
-    fetch(`${import.meta.env.BASE_URL}/api/${product?.category}.json`)
+    fetch(
+      new URL(
+        `api/${product?.category}.json`,
+        window.location.origin + import.meta.env.BASE_URL,
+      ),
+    )
       .then(response => response.json())
       .then((data: ProductDetails[]) => {
         const prod = data.find(i => i.id === itemId);

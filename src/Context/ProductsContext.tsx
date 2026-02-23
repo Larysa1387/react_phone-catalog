@@ -42,7 +42,12 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}/api/products.json`)
+    fetch(
+      new URL(
+        'api/products.json',
+        window.location.origin + import.meta.env.BASE_URL,
+      ),
+    )
       .then(response => response.json())
       .then(data => {
         setProducts(data);
