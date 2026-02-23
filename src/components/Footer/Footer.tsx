@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 import s from './Footer.module.scss';
+import { asset } from '../../hooks/utils';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -17,7 +18,7 @@ export const Footer = () => {
         <div className="is-flex-tablet is-justify-content-space-between is-align-items-center">
           <div className={`is-flex ${s.footer__logo_wrap}`}>
             <a href="#">
-              <img src="./img/logo/logo.png" alt="Logo" />
+              <img src={asset('img/logo/logo.png')} alt="Logo" />
             </a>
           </div>
 

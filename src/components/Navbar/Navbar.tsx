@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import s from './Navbar.module.scss';
+import { asset } from '../../hooks/utils';
 
 const navLinkActive = ({ isActive }: { isActive: boolean }) => {
   return classNames(`navbar-item is-uppercase ${s.link_style} `, {
@@ -77,7 +78,7 @@ export const Navbar = () => {
     >
       <div className="navbar-brand ml-5">
         <Link to="/" className={`${s.logo}`}>
-          <img src="./img/logo/logo.png" alt="Logo" />
+          <img src={asset('img/logo/logo.png')} alt="Logo" />
         </Link>
         <a
           className={`navbar-burger is-hidden-tablet ${isActive ? 'is-active' : ''}`}

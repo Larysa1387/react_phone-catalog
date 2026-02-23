@@ -1,3 +1,4 @@
+import { asset } from '../../hooks/utils';
 import s from './NotFoundPage.module.scss';
 
 export const NotFoundPage = () => (
@@ -6,7 +7,7 @@ export const NotFoundPage = () => (
       Page not found
     </h2>
     <figure className={`image ${s.big_img__figure} ${s.not_found}`}>
-      <img src="./img/page-not-found.png" alt={'page not found'} />
+      <img src={asset('img/page-not-found.png')} alt={'page not found'} />
     </figure>
   </div>
 );

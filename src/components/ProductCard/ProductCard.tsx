@@ -8,6 +8,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 
 import s from './ProductCard.module.scss';
+import { asset } from '../../hooks/utils';
 
 type Props = {
   product: Product;
@@ -46,7 +47,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <figure className={`image ${s.img_figure}`}>
             <img
               className={s.card_img}
-              src={`./${product.image}`}
+              src={asset(product.image)}
               alt={product.name}
             />
           </figure>

@@ -5,6 +5,7 @@ import { CategoriesContext } from '../../../../Context/CategoriesContext';
 import { ProductsContext } from '../../../../Context/ProductsContext';
 
 import s from './Categories.module.scss';
+import { asset } from '../../../../hooks/utils';
 
 export const Categories = () => {
   const categories = useContext(CategoriesContext);
@@ -27,7 +28,7 @@ export const Categories = () => {
             <figure
               className={`image ${s.small_img__figure} ${s[`box_${idx}`]}`}
             >
-              <img src={`${category.src}`} alt={category.name} />
+              <img src={asset(category.src)} alt={category.name} />
             </figure>
 
             <p className={`${s.category_title}`}>{category.longName}</p>

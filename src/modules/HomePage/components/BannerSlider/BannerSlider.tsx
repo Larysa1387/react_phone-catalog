@@ -5,6 +5,7 @@ import s from './BannerSlider.module.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { asset } from '../../../../hooks/utils';
 
 const images: string[] = [
   './img/banner-new-phone/hero__bdntboqignj6_xlarge.jpg',
@@ -36,7 +37,7 @@ export const BannerSlider = () => {
         {images.map((src, index) => (
           <SwiperSlide key={index}>
             <figure className={`image ${s.banner_item}`}>
-              <img src={src} alt={`slide-${index}`} />
+              <img src={asset(src)} alt={`slide-${index}`} />
             </figure>
           </SwiperSlide>
         ))}

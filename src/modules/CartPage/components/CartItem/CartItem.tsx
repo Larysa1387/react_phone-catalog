@@ -6,6 +6,7 @@ import { useContextSelector } from 'use-context-selector';
 import { Link } from 'react-router-dom';
 
 import s from './CartItem.module.scss';
+import { asset } from '../../../../hooks/utils';
 
 type Props = { product: CartItemType };
 
@@ -41,7 +42,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         >
           <img
             className={`${s.product_image} image is-64x64`}
-            src={product.image}
+            src={asset(product.image)}
             alt={product.name}
           />
           <p className={s.product_name}>{product.name}</p>

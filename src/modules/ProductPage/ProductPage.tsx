@@ -14,6 +14,7 @@ import { Breadcrumb } from '../../components/Breadcrumb';
 
 import s from './ProductPage.module.scss';
 import { Loader } from '../../components/Loader';
+import { asset } from '../../hooks/utils';
 
 export const ProductPage = () => {
   const products = useContextSelector(ProductsContext, ctx => ctx.products);
@@ -153,7 +154,7 @@ export const ProductPage = () => {
 
   function handleImageCkick(imSrc: string) {
     if (imageRef.current) {
-      imageRef.current.src = `./${imSrc}`;
+      imageRef.current.src = asset(`/${imSrc}`);
     }
   }
 
@@ -179,7 +180,10 @@ export const ProductPage = () => {
             Product not found
           </h2>
           <figure className={`image ${s.big_img__figure} ${s.not_found}`}>
-            <img src="./product-not-found.png" alt={'product not found'} />
+            <img
+              src={asset('product-not-found.png')}
+              alt={'product not found'}
+            />
           </figure>
         </div>
       )}
@@ -202,7 +206,7 @@ export const ProductPage = () => {
                           className={`image ${s.small_img__figure}`}
                           onClick={() => handleImageCkick(im)}
                         >
-                          <img src={`./${im}`} alt={`image-${im}`} />
+                          <img src={asset(im)} alt={`image-${im}`} />
                         </figure>
                       </div>
                     ))}
@@ -212,7 +216,7 @@ export const ProductPage = () => {
                       <figure className={`image ${s.big_img__figure}`}>
                         <img
                           ref={imageRef}
-                          src={`./${productDetails?.images[0]}`}
+                          src={asset(productDetails?.images[0])}
                           alt={`image`}
                         />
                       </figure>
