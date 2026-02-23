@@ -51,11 +51,6 @@ export const ProductPage = () => {
       return;
     }
 
-    /* eslint-disable no-console */
-    console.log(
-      `${window.location.origin}${import.meta.env.BASE_URL}/api/${product?.category}.json`,
-    );
-
     fetch(
       `${window.location.origin}${import.meta.env.BASE_URL}/api/${product?.category}.json`,
     )
@@ -158,7 +153,7 @@ export const ProductPage = () => {
 
   function handleImageCkick(imSrc: string) {
     if (imageRef.current) {
-      imageRef.current.src = `/${imSrc}`;
+      imageRef.current.src = `./${imSrc}`;
     }
   }
 
