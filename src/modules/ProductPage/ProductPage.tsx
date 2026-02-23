@@ -53,11 +53,11 @@ export const ProductPage = () => {
 
     /* eslint-disable no-console */
     console.log(
-      `${window.location.origin}${import.meta.env.BASE_URL}api/${product?.category}.json`,
+      `${window.location.origin}${import.meta.env.BASE_URL}/api/${product?.category}.json`,
     );
 
     fetch(
-      `${window.location.origin}${import.meta.env.BASE_URL}api/${product?.category}.json`,
+      `${window.location.origin}${import.meta.env.BASE_URL}/api/${product?.category}.json`,
     )
       .then(response => response.json())
       .then((data: ProductDetails[]) => {
