@@ -48,7 +48,7 @@ export const ProductPage = () => {
   useEffect(() => {
     if (!product) {
       setNotFound(true);
-
+      setIsLoading(false);
       return;
     }
 
@@ -72,7 +72,6 @@ export const ProductPage = () => {
       })
       .finally(() => {
         setIsLoading(false);
-        setNotFound(false);
       });
   }, [products, product, itemId]);
 
@@ -189,7 +188,7 @@ export const ProductPage = () => {
           </h2>
           <figure className={`image ${s.big_img__figure} ${s.not_found}`}>
             <img
-              src={asset('product-not-found.png')}
+              src={asset('img/product-not-found.png')}
               alt={'product not found'}
             />
           </figure>
