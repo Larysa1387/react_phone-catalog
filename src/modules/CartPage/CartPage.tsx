@@ -7,6 +7,7 @@ import { ProductsContext } from '../../Context/ProductsContext';
 import { ModalCheckout } from './components/ModalCheckout';
 
 import s from './CartPage.module.scss';
+import { asset } from '../../hooks/utils';
 
 export const CartPage = () => {
   const cartProds = useContextSelector(ProductsContext, ctx => ctx.cartProds);
@@ -34,7 +35,7 @@ export const CartPage = () => {
             Your cart is empty
           </h2>
           <figure className={`image ${s.big_img__figure} ${s.not_found}`}>
-            <img src="/img/cart-is-empty.png" alt={'cart is empty'} />
+            <img src={asset('img/cart-is-empty.png')} alt={'cart is empty'} />
           </figure>
         </div>
       ) : (

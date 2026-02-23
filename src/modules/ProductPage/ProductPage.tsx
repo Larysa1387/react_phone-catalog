@@ -14,6 +14,7 @@ import { Breadcrumb } from '../../components/Breadcrumb';
 
 import s from './ProductPage.module.scss';
 import { Loader } from '../../components/Loader';
+import { asset } from '../../hooks/utils';
 
 export const ProductPage = () => {
   const products = useContextSelector(ProductsContext, ctx => ctx.products);
@@ -51,7 +52,9 @@ export const ProductPage = () => {
       return;
     }
 
-    fetch(`/api/${product?.category}.json`)
+    fetch(
+      `${window.location.origin}${import.meta.env.BASE_URL}/api/${product?.category}.json`,
+    )
       .then(response => response.json())
       .then((data: ProductDetails[]) => {
         const prod = data.find(i => i.id === itemId);
@@ -149,9 +152,17 @@ export const ProductPage = () => {
     }
   }
 
-  function handleImageCkick(imSrc: string) {
+  function handleImageCkick(e: React.MouseEvent<HTMLElement>) {
     if (imageRef.current) {
-      imageRef.current.src = `/${imSrc}`;
+      e.currentTarget.parentElement?.parentElement?.childNodes.forEach(node => {
+        if (node instanceof HTMLElement) {
+          node.classList.remove(s.is_active);
+        }
+      });
+      e.currentTarget.parentElement?.classList.add(s.is_active);
+      const image = e.currentTarget.getAttribute('data-sourceimg') || '';
+
+      imageRef.current.src = asset(image);
     }
   }
 
@@ -177,7 +188,10 @@ export const ProductPage = () => {
             Product not found
           </h2>
           <figure className={`image ${s.big_img__figure} ${s.not_found}`}>
-            <img src="/img/product-not-found.png" alt={'product not found'} />
+            <img
+              src={asset('product-not-found.png')}
+              alt={'product not found'}
+            />
           </figure>
         </div>
       )}
@@ -195,12 +209,16 @@ export const ProductPage = () => {
                 <div className={`columns is-flex-mobile ${s.all_img_wrap}`}>
                   <div className="column is-flex-mobile p-0 is-flex-grow-0">
                     {productDetails?.images.map((im, idx) => (
-                      <div className={`${s.small_img}`} key={idx}>
+                      <div
+                        className={`${s.small_img} ${idx === 0 ? s.is_active : ''}`}
+                        key={idx}
+                      >
                         <figure
+                          data-sourceimg={im}
                           className={`image ${s.small_img__figure}`}
-                          onClick={() => handleImageCkick(im)}
+                          onClick={handleImageCkick}
                         >
-                          <img src={`/${im}`} alt={`image-${im}`} />
+                          <img src={asset(im)} alt={`image-${im}`} />
                         </figure>
                       </div>
                     ))}
@@ -210,7 +228,7 @@ export const ProductPage = () => {
                       <figure className={`image ${s.big_img__figure}`}>
                         <img
                           ref={imageRef}
-                          src={`/${productDetails?.images[0]}`}
+                          src={asset(productDetails?.images[0])}
                           alt={`image`}
                         />
                       </figure>
