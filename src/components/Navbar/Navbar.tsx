@@ -6,9 +6,9 @@ import { CategoriesContext } from '../../Context/CategoriesContext';
 import { ProductsContext } from '../../Context/ProductsContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { asset } from '../../hooks/utils';
 
 import s from './Navbar.module.scss';
-import { asset } from '../../hooks/utils';
 
 const navLinkActive = ({ isActive }: { isActive: boolean }) => {
   return classNames(`navbar-item is-uppercase ${s.link_style} `, {
@@ -69,6 +69,11 @@ export const Navbar = () => {
     setIsActive(false);
   }, [location.pathname]);
 
+  const totalQuantity = cartProds.reduce(
+    (sum, product) => sum + product.quantity,
+    0,
+  );
+
   return (
     <nav
       data-cy="nav"
@@ -109,12 +114,10 @@ export const Navbar = () => {
               to={`/${category.slug}`}
             >
               {category.name}
-              {/* <p className="Category_title">{category.name}</p> */}
             </NavLink>
           ))}
         </div>
         <div className={`navbar-end is-flex ${s.icons_wrap}`}>
-          {/* <div className={`is-flex ${s.icons_wrap}`}> */}
           <NavLink
             to="/favourites"
             className={args => classNames(navLinkActive(args), s.iconLink)}
@@ -141,13 +144,10 @@ export const Navbar = () => {
               style={{ fontSize: '16px', color: '#0f0f11' }}
             >
               <BagIcon />
-              <span className={`badge ${s.badge_style}`}>
-                {cartProds.length}
-              </span>
+              <span className={`badge ${s.badge_style}`}>{totalQuantity}</span>
             </span>
           </NavLink>
         </div>
-        {/* </div> */}
       </div>
     </nav>
   );
