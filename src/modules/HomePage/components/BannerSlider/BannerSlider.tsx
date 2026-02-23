@@ -8,9 +8,9 @@ import 'swiper/css/pagination';
 import { asset } from '../../../../hooks/utils';
 
 const images: string[] = [
-  './img/banner-new-phone/hero__bdntboqignj6_xlarge.jpg',
-  './img/banner-new-phone/highlights_design_endframe__flnga0hibmeu_large_2x.jpg',
-  './img/banner-new-phone/highlights_ios__empnwsdz698i_large_2x.jpg',
+  'img/banner-new-phone/hero__bdntboqignj6_xlarge.jpg',
+  'img/banner-new-phone/highlights_design_endframe__flnga0hibmeu_large_2x.jpg',
+  'img/banner-new-phone/highlights_ios__empnwsdz698i_large_2x.jpg',
 ];
 
 export const BannerSlider = () => {
