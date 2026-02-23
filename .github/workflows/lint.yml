@@ -2,7 +2,7 @@ name: Lint
 
 on:
   pull_request:
-    branches: [master1]
+    branches: [master]
 
 jobs:
   run_linter:
