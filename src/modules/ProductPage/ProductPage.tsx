@@ -152,9 +152,16 @@ export const ProductPage = () => {
     }
   }
 
-  function handleImageCkick(imSrc: string) {
+  function handleImageCkick(e: React.MouseEvent<HTMLElement>) {
     if (imageRef.current) {
-      imageRef.current.src = asset(`/${imSrc}`);
+      e.currentTarget.parentElement?.parentElement?.childNodes.forEach(node => {
+        if (node instanceof HTMLElement) {
+          node.classList.remove(s.is_active);
+        }
+      });
+      e.currentTarget.parentElement?.classList.add(s.is_active);
+      const image = e.currentTarget.getAttribute('data-sourceImg') || '';
+      imageRef.current.src = asset(image);
     }
   }
 
@@ -201,10 +208,14 @@ export const ProductPage = () => {
                 <div className={`columns is-flex-mobile ${s.all_img_wrap}`}>
                   <div className="column is-flex-mobile p-0 is-flex-grow-0">
                     {productDetails?.images.map((im, idx) => (
-                      <div className={`${s.small_img}`} key={idx}>
+                      <div
+                        className={`${s.small_img} ${idx === 0 ? s.is_active : ''}`}
+                        key={idx}
+                      >
                         <figure
+                          data-sourceImg={im}
                           className={`image ${s.small_img__figure}`}
-                          onClick={() => handleImageCkick(im)}
+                          onClick={handleImageCkick}
                         >
                           <img src={asset(im)} alt={`image-${im}`} />
                         </figure>
